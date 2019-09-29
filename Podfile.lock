@@ -1,0 +1,20 @@
+PODS:
+  - GiphyCoreSDK (1.4.3)
+  - PINCache (2.3)
+
+DEPENDENCIES:
+  - GiphyCoreSDK
+  - PINCache
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GiphyCoreSDK
+    - PINCache
+
+SPEC CHECKSUMS:
+  GiphyCoreSDK: 354d60d3e1ea11050fb4fed272e0e4dd7d1eb48d
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
+
+PODFILE CHECKSUM: d0ff33c05231ce1718426f1117f277df54e376ff
+
+COCOAPODS: 1.6.0.beta.2
