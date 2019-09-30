@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,13 +36,18 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KQ4-Lx-K7A">
                                                     <rect key="frame" x="0.0" y="0.0" width="204" height="157"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="znb-jv-BTL">
+                                                    <rect key="frame" x="92" y="68.5" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="znb-jv-BTL" firstAttribute="centerX" secondItem="lZZ-eX-pq9" secondAttribute="centerX" id="IqH-1f-W5W"/>
                                             <constraint firstItem="KQ4-Lx-K7A" firstAttribute="top" secondItem="lZZ-eX-pq9" secondAttribute="top" id="S1e-i1-d0u"/>
                                             <constraint firstItem="KQ4-Lx-K7A" firstAttribute="leading" secondItem="lZZ-eX-pq9" secondAttribute="leading" id="Xp9-91-r4O"/>
                                             <constraint firstAttribute="trailing" secondItem="KQ4-Lx-K7A" secondAttribute="trailing" id="dA6-d5-yW2"/>
                                             <constraint firstAttribute="bottom" secondItem="KQ4-Lx-K7A" secondAttribute="bottom" id="rhl-B3-Yxi"/>
+                                            <constraint firstItem="znb-jv-BTL" firstAttribute="centerY" secondItem="lZZ-eX-pq9" secondAttribute="centerY" id="wLo-V6-WaB"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
@@ -69,6 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="141" y="99"/>
         </scene>
     </scenes>
 </document>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A97015B7B110147B9670DA7 /* Pods_Giphy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9587B4ABB9F3EC4FC31CF22 /* Pods_Giphy.framework */; };
+		7D19ABFB2342385300D9BA91 /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19ABFA2342385300D9BA91 /* GifCollectionViewCell.swift */; };
 		7D7DCC5723407A5E00B9F107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7DCC5623407A5E00B9F107 /* AppDelegate.swift */; };
 		7D7DCC5923407A5E00B9F107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7DCC5823407A5E00B9F107 /* ViewController.swift */; };
 		7D7DCC5C23407A5E00B9F107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D7DCC5A23407A5E00B9F107 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		2A1E6FACAB7FC2CF68D0781B /* Pods-Giphy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Giphy.debug.xcconfig"; path = "Target Support Files/Pods-Giphy/Pods-Giphy.debug.xcconfig"; sourceTree = "<group>"; };
+		7D19ABFA2342385300D9BA91 /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D7DCC5323407A5E00B9F107 /* Giphy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Giphy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7DCC5623407A5E00B9F107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D7DCC5823407A5E00B9F107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				7D7DCC82234104E200B9F107 /* KRLCollectionViewGridLayout.h */,
 				7D7DCC81234104E200B9F107 /* KRLCollectionViewGridLayout.m */,
 				7D7DCC80234104DF00B9F107 /* Giphy-Bridging-Header.h */,
+				7D19ABFA2342385300D9BA91 /* GifCollectionViewCell.swift */,
 			);
 			path = Giphy;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D7DCC83234104E200B9F107 /* KRLCollectionViewGridLayout.m in Sources */,
+				7D19ABFB2342385300D9BA91 /* GifCollectionViewCell.swift in Sources */,
 				7D7DCC5923407A5E00B9F107 /* ViewController.swift in Sources */,
 				7D7DCC692340B9EC00B9F107 /* ImageDownloader.swift in Sources */,
 				7D7DCC5723407A5E00B9F107 /* AppDelegate.swift in Sources */,

@@ -8,14 +8,13 @@
 
 import UIKit
 import GiphyCoreSDK
-import PINCache
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var collection: UICollectionView!
-    var firstGif = [GPHMedia]()
     let API_KEY = "G875ogRR7vhixUFFL24kVuKrz2UHoB69"
-    var urls = Array<Any>()
+    var gifImages: [String: UIImage] = [:]
+    var gifUrls: [String] = []
 
     //MARK:- View life cycle
     override func viewDidLoad() {
@@ -28,37 +27,57 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //MARK:- Gif helper method
     func getGifImages() {
         _ = GiphyCore.shared.trending() { (response, error) in
-            self.firstGif = (response?.data)!
-            print(self.firstGif)
-            DispatchQueue.main.async {
-                self.collection.reloadData()
+            guard error == nil else {
+                return
             }
-            self.saveGifImagesInCache()
-        }
-    }
-    
-    func saveGifImagesInCache() {
-        for gif in self.firstGif {
-            if !PINCache.shared().containsObject(forKey: gif.id) {
-                self.urls.append(gif.id)
-                let img = UIImage.gifImageWithURL("https://media.giphy.com/media/\(gif.id)/giphy.gif") ?? UIImage()
-                PINCache.shared().setObject(img, forKey: gif.id)
-                DispatchQueue.main.async {
-                    self.collection.reloadItems(at: [IndexPath(item: self.urls.count-1, section: 0)])
+            if let response = response, let data = response.data {
+                for result in data {
+                    if let urlStr = result.images?.downsized?.gifUrl {
+                        self.gifUrls.append(urlStr)
+                    }
                 }
+                if !self.gifUrls.isEmpty {
+                    DispatchQueue.main.async {
+                        self.collection.reloadData()
+                    }
+                }
+            } else {
+                print("No Results Found")
             }
         }
     }
     
-    //MARK:- Coolection View Delegate
+    //MARK:- Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return firstGif.count
+        return gifUrls.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gifCell", for: indexPath)
+        let uniqueId = Int.random(in: Int.min...Int.max)
+        cell.tag = uniqueId
+        
         let gifImage = cell.viewWithTag(100) as! UIImageView
-        gifImage.image = (PINCache.shared().object(forKey: firstGif[indexPath.row].id) as? UIImage) ?? UIImage(named: "imgPlaceholder")
+        let activityIndicator = cell.viewWithTag(101) as! UIActivityIndicatorView
+        
+        if let image = gifImages[gifUrls[indexPath.item]] {
+            gifImage.image = image
+            activityIndicator.isHidden = true
+        } else {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            DispatchQueue.global(qos: .default).async {
+                let gifImageP = UIImage.gifImageWithURL(self.gifUrls[indexPath.row])
+                DispatchQueue.main.async {
+                    if cell.tag == uniqueId {
+                        activityIndicator.stopAnimating()
+                        activityIndicator.isHidden = true
+                        gifImage.image = gifImageP
+                        self.gifImages[self.gifUrls[indexPath.item]] = gifImageP
+                    }
+                }
+            }
+        }
         return cell
     }
     
@@ -77,7 +96,4 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout().interitemSpacing = 3
         layout().lineSpacing = 3
     }
-
-
 }
-
