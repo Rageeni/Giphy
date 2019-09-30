@@ -15,6 +15,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet var collection: UICollectionView!
     var firstGif = [GPHMedia]()
     let API_KEY = "G875ogRR7vhixUFFL24kVuKrz2UHoB69"
+    var urls = Array<Any>()
 
     //MARK:- View life cycle
     override func viewDidLoad() {
@@ -39,12 +40,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func saveGifImagesInCache() {
         for gif in self.firstGif {
             if !PINCache.shared().containsObject(forKey: gif.id) {
+                self.urls.append(gif.id)
                 let img = UIImage.gifImageWithURL("https://media.giphy.com/media/\(gif.id)/giphy.gif") ?? UIImage()
                 PINCache.shared().setObject(img, forKey: gif.id)
-//                DispatchQueue.main.async {
-//                    let visibleIndexPaths = self.collection.indexPathsForVisibleItems
-//                    self.collection.reloadItems(at: visibleIndexPaths)
-//                }
+                DispatchQueue.main.async {
+                    self.collection.reloadItems(at: [IndexPath(item: self.urls.count-1, section: 0)])
+                }
             }
         }
     }
